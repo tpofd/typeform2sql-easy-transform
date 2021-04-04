@@ -22,12 +22,13 @@ forms = Typeform(api_key).forms
 result = forms.get(form_id)
 
 db_cursor.execute('drop table if exists questions_dictionary')
-db_cursor.execute('create table questions_dictionary (id VARCHAR(255), title VARCHAR(255))')
+db_cursor.execute('create table questions_dictionary (id VARCHAR(255), question_title VARCHAR(255), question_type VARCHAR(255))')
 
 for i in range(len(result['fields'])):
-    question_insert_query = 'insert into questions_dictionary (id, title) values ("{0}", "{1}")'.format(
+    question_insert_query = 'insert into questions_dictionary (id, question_title, question_type) values ("{0}", "{1}", "{2}")'.format(
         result['fields'][i]['id'],
-        result['fields'][i]['title']
+        result['fields'][i]['title'],
+        result['fields'][i]['type']
     )
     db_cursor.execute(question_insert_query)
 
