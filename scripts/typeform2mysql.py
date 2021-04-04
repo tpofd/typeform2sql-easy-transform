@@ -1,6 +1,5 @@
 from typeform import Typeform
 import mysql.connector
-import json
 
 api_key = '{PASTE YOUR API KEY HERE}'
 form_id = '{PASTE YOUR FORM ID HERE}'
